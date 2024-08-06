@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Dashboard</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <style>
+        body {
+            display: flex;
+            flex-direction: column; /* To stack header and content */
+            align-items: center;    /* Center content */
+            margin: 0;
+            height: 100vh;         /* Full viewport height */
+        }
+
+        #container {
+            display: flex;
+            width: 100%;           /* Full width */
+            padding: 20px;
+            box-sizing: border-box; /* Include padding in width */
+        }
+
+        #transaction-form {
+            width: 33.33%;         /* Width of the form */
+            padding: 20px;         /* Add padding */
+            box-sizing: border-box; /* Include padding in width */
+        }
+
+        #chart-container {
+            width: 33.33%;         /* Width of the chart */
+            padding: 20px;         /* Add padding */
+            box-sizing: border-box; /* Include padding in width */
+        }
+
+        .chart {
+            width: 100%;           /* Make the chart responsive */
+            height: auto;          /* Maintain aspect ratio */
+        }
+
+        h1, h2 {
+            margin: 10px;         /* Add margin for headers */
+        }
+
+        button {
+            margin-top: 10px; /* Add some space above buttons */
+        }
+
+        ul {
+            list-style-type: none; /* Remove bullet points */
+            padding: 0; /* Remove padding */
+        }
+
+        li {
+            display: flex; /* Flex for button alignment */
+            justify-content: space-between; /* Space out transaction info and delete button */
+            align-items: center; /* Align items vertically centered */
+            margin: 5px 0; /* Space between transactions */
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Dashboard</h1>
+    <button onclick="logout()">Logout</button>
+
+    <div id="container">
+        <div id="transaction-form">
+            <h2>Add Transaction</h2>
+            <form id="form">
+                <input type="number" id="amount" placeholder="Amount" required>
+                <input type="text" id="description" placeholder="Description" required>
+                <input type="text" id="category" placeholder="Category (e.g., Food)" required>
+                <input type="date" id="date" placeholder="Date" required>
+                <button type="submit">Add Transaction</button>
+            </form>
+
+            <h2>Your Transactions</h2>
+            <ul id="transactions-list"></ul>
+            <h2>Total Expenses</h2>
+            <div id="total-expense-amount">$0</div>
+        </div>
+
+        <div id="chart-container">
+            <h2>Amount vs. Category</h2>
+            <canvas id="myChart" class="chart" width="400" height="300"></canvas>
+        </div>
+    </div>
+
+    <script src="script.js" type="module"></script>
+</body>
+
+</html>
